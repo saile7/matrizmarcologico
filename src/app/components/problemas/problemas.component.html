@@ -1,0 +1,77 @@
+<body> 
+    <h1>Registro de Problemas</h1>
+        
+    <div class="content">
+        <div class="container">
+            <img class="bg-img" src="assets/imagenes/bg.jpg" alt="">
+                <form [formGroup]="formularioproblemas">
+                    <div> 
+                        <input formControlName="nombre_extraido" type="text" class="form-control" readonly="readonly"
+                            name="" id="texto1" aria-describedby="helpId" placeholder="Proyecto">
+                    </div>
+                    <div> 
+                        <input formControlName="id_involucrado" type="text" class="form-control" readonly="readonly"
+                            name="" id="texto1" aria-describedby="helpId" placeholder="Involucrado">
+                    </div>
+                    <div class="connexion">
+                        <div class="contact-form">
+                            <label>Problema</label> 
+                            <input formControlName="problema" placeholder="" type="text" autocomplete="off">
+                            
+                            <label>.</label>
+                            <input (click) = "enviarDatos3()" class="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guardar" readonly="readonly">
+    
+                            <label>.</label>
+                            
+                            <input (click) = "regresarInvolucrados()" id="sub" value="Regresar involucrado" readonly="readonly" >
+                        </div>                    
+                    </div> 
+                </form>               
+        </div>
+        <div id="contenedor">
+            <div class="table-responsive">
+                        
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <label>Involucrado:</label>
+                            </th>
+                            <th scope="col">
+                                <form [formGroup]="formularioverpertenencia">
+                                    <input  formControlName="nombre" type="text" class="form-control" readonly="readonly"
+                                        name="" id="texto1" aria-describedby="helpId" placeholder="Nombre">
+                                </form>
+                            </th>
+                            <th colspan="2" scope="col"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">N.-</th>
+                            <th scope="col">Problema</th>
+                            <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
+                            <th scope="col"><i class="fa-regular fa-pen-to-square"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let problema of Problemas; let iControl=index" class="">
+                            <td>{{ iControl+1}}</td> 
+                            <td>{{ problema.problema}}</td> 
+                            <td>
+                                <button (click) = "eliminarProblema(problema.id_problema)" type="button" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></button>
+                            </td> 
+                            <td>
+                                <button (click) = "editarproblema( problema.id_problema)" type="button" class="btn btn-outline-info"><i class="fa-regular fa-pen-to-square"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    
+    </div>
+    
+    
+    </body> 
+
+
